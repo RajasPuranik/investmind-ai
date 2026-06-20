@@ -24,7 +24,6 @@ CRITICAL RULES:
 3. Maintain a slightly futuristic, cyberpunk persona in your tone without being overly cheesy.
 4. Be concise but highly informative.
 5. If a user asks for stock picks or investment advice, politely decline and offer to teach them how to analyze the market instead.`,
-    messages,
   });
 
   return result.toTextStreamResponse();
