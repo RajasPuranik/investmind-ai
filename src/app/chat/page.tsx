@@ -89,7 +89,7 @@ export default function ChatPage() {
                       : 'bg-cyber-bg/80 border border-cyber-panel-border text-gray-300 rounded-tl-none leading-relaxed'
                   }`}
                 >
-                  {m.content}
+                  {m.parts ? m.parts.map((p: any, i: number) => p.type === 'text' ? <span key={i}>{p.text}</span> : null) : (m as any).content}
                 </div>
                 {m.role === 'user' && (
                   <div className="w-8 h-8 rounded-full bg-neon-purple/20 border border-neon-purple flex-shrink-0 flex items-center justify-center mt-1">
