@@ -2,10 +2,21 @@
 
 import { useChat } from "@ai-sdk/react";
 import { Send, Bot, User, Sparkles } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ChatPage() {
-  const { messages, input, handleInputChange, handleSubmit, setInput, isLoading } = useChat();
+  const { messages, status, sendMessage } = useChat();
+  const [input, setInput] = useState("");
+  const isLoading = status === "streaming" || status === "submitted";
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    sendMessage({ role: "user", parts: [{ type: "text", text: input }] });
+    setInput("");
+  };
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const quickSuggestions = [
