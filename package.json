@@ -11,13 +11,16 @@
   "dependencies": {
     "@ai-sdk/google": "^3.0.83",
     "@ai-sdk/react": "^3.0.210",
+    "@tailwindcss/typography": "^0.5.20",
     "ai": "^6.0.208",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.21.0",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
     "react-tsparticles": "^2.12.2",
+    "remark-gfm": "^4.0.1",
     "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {

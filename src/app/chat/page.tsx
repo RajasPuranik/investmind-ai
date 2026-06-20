@@ -4,6 +4,9 @@ import { useChat } from "@ai-sdk/react";
 import { Send, Bot, User, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 export default function ChatPage() {
   const { messages, status, sendMessage } = useChat();
   const [input, setInput] = useState("");
@@ -86,10 +89,16 @@ export default function ChatPage() {
                   className={`max-w-[80%] p-4 rounded-xl ${
                     m.role === 'user' 
                       ? 'bg-neon-purple/20 border border-neon-purple/50 text-white rounded-tr-none' 
-                      : 'bg-cyber-bg/80 border border-cyber-panel-border text-gray-300 rounded-tl-none leading-relaxed'
+                      : 'bg-cyber-bg/80 border border-cyber-panel-border text-gray-300 rounded-tl-none leading-relaxed prose prose-invert prose-headings:text-neon-cyan prose-a:text-neon-purple prose-strong:text-white max-w-none'
                   }`}
                 >
-                  {m.parts ? m.parts.map((p: any, i: number) => p.type === 'text' ? <span key={i}>{p.text}</span> : null) : (m as any).content}
+                  {m.role === 'user' ? (
+                    m.parts ? m.parts.map((p: any, i: number) => p.type === 'text' ? <span key={i}>{p.text}</span> : null) : (m as any).content
+                  ) : (
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {m.parts ? m.parts.map((p: any) => p.type === 'text' ? p.text : '').join('') : (m as any).content}
+                    </ReactMarkdown>
+                  )}
                 </div>
                 {m.role === 'user' && (
                   <div className="w-8 h-8 rounded-full bg-neon-purple/20 border border-neon-purple flex-shrink-0 flex items-center justify-center mt-1">
