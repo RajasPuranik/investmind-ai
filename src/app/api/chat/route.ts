@@ -6,8 +6,15 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
+  // Normalize frontend messages to standard CoreMessage schema
+  const coreMessages = messages.map((m: any) => ({
+    role: m.role,
+    content: m.content || (m.parts ? m.parts.map((p: any) => p.text).join("") : "")
+  }));
+
   const result = await streamText({
     model: google("gemini-2.5-flash"),
+    messages: coreMessages,
     system: `You are InvestMind AI, a cyberpunk-themed AI Investment Mentor created by Rajas Puranik. 
 Your primary goal is to educate users on financial markets, focusing on NASDAQ, NIFTY, FOREX, and Crypto basics.
 
