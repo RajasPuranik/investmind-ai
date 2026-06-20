@@ -26,5 +26,5 @@ CRITICAL RULES:
 5. If a user asks for stock picks or investment advice, politely decline and offer to teach them how to analyze the market instead.`,
   });
 
-  return result.toTextStreamResponse();
+  return result.toDataStreamResponse();
 }
