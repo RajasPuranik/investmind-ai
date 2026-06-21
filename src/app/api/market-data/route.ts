@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import yahooFinance from 'yahoo-finance2';
+import YahooFinance from 'yahoo-finance2';
+const yahooFinance = new (YahooFinance as any)();
 
 const SYMBOL_MAP: Record<string, string> = {
   '^IXIC': 'NASDAQ',
