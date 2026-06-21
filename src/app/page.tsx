@@ -20,7 +20,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block mb-4 px-4 py-1 rounded-full glass-panel border border-neon-purple text-neon-purple text-sm font-semibold tracking-wide">
-            Built with ❤️ by Rajas Puranik
+            Built with ❤️ by Rajas Puranik & Samarth Tayal
           </div>
           <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6 tracking-tight text-white">
             Master the Markets with <br className="hidden md:block" />
